@@ -1,0 +1,102 @@
+.page-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 252, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent 24%),
+    linear-gradient(135deg, #0f2f6b 0%, #155e9a 52%, #0b8db0 100%);
+}
+
+.section-panel {
+  background: rgba(12, 23, 47, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 45px rgba(3, 12, 31, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.soft-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.ui-card {
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+}
+
+.ui-title {
+  color: #f8fbff;
+  letter-spacing: -0.02em;
+}
+
+.ui-muted {
+  color: #d7eefb;
+}
+
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.3rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ui-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
+}
+
+.ui-button-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+}
+
+.ui-button-secondary {
+  background: rgba(255, 255, 255, 0.92);
+  color: #1e293b;
+}
+
+.ui-input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.94);
+  padding: 0.9rem 1rem;
+  color: #0f172a;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ui-input:focus {
+  border-color: rgba(37, 99, 235, 0.65);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.content-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
