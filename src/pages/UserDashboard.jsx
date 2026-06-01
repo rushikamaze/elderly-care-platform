@@ -104,16 +104,16 @@ function UserDashboard() {
   };
 
   return (
-    <div className="min-h-screen px-4 pt-28 pb-12 bg-gradient-to-br from-[#0f2f6b] via-[#155e9a] to-[#0b8db0]">
+    <div className="min-h-screen px-4 pt-44 sm:pt-28 pb-12 bg-gradient-to-br from-[#0f2f6b] via-[#155e9a] to-[#0b8db0]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-200 mb-3">
             Personal Overview
           </p>
-          <h1 className="text-4xl font-bold text-white mb-3 drop-shadow-sm">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3 drop-shadow-sm">
             User Dashboard
           </h1>
-          <p className="text-sky-100 max-w-2xl mx-auto text-lg">
+          <p className="text-sky-100 max-w-2xl mx-auto text-base sm:text-lg">
             Track bookings, manage care schedules, and stay updated on upcoming services.
           </p>
         </div>
@@ -222,12 +222,16 @@ function UserDashboard() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 mb-10">
-          <div className="bg-slate-900/30 backdrop-blur-lg p-5 rounded-3xl shadow-lg border border-white/10">
+          <div className="bg-slate-900/30 backdrop-blur-lg p-4 sm:p-5 rounded-3xl shadow-lg border border-white/10 overflow-hidden">
             <h2 className="text-white text-lg font-semibold mb-4 text-center">
               Care Calendar
             </h2>
-            <div className="flex justify-center">
-              <Calendar onChange={setDate} value={date} className="rounded-2xl border-0" />
+            <div className="flex justify-center overflow-hidden">
+              <Calendar
+                onChange={setDate}
+                value={date}
+                className="w-full max-w-[22rem] rounded-2xl border-0"
+              />
             </div>
           </div>
 
