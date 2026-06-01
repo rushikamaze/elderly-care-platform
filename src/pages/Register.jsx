@@ -90,8 +90,8 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 pt-28 pb-12 bg-gradient-to-br from-[#0f2f6b] via-[#155e9a] to-[#0b8db0]">
-      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-slate-900/30 p-8 shadow-2xl backdrop-blur-xl">
+    <div className="min-h-screen flex items-center justify-center px-4 pt-44 sm:pt-28 pb-12 bg-gradient-to-br from-[#0f2f6b] via-[#155e9a] to-[#0b8db0]">
+      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-slate-900/30 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-200 mb-3">
             First-Time Access

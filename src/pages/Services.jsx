@@ -89,7 +89,7 @@ function Services() {
   ]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#eaf7fb] via-[#d2eef5] to-[#b9e3ee] px-4 sm:px-6 pt-24 sm:pt-28 pb-12">
+    <div className="min-h-screen bg-gradient-to-br from-[#eaf7fb] via-[#d2eef5] to-[#b9e3ee] px-4 sm:px-6 pt-44 sm:pt-28 pb-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-600 mb-3">
