@@ -27,18 +27,18 @@ function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 border-b border-white/40 bg-white/70 backdrop-blur-xl shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
-        <div className="flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3">
+        <div className="flex items-center justify-between gap-3">
           <Link
             to="/"
-            className="flex items-center gap-3 text-slate-900 font-bold text-xl tracking-tight"
+            className="flex min-w-0 items-center gap-3 text-slate-900 font-bold text-xl tracking-tight"
           >
-            <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-md">
+            <div className="w-10 h-10 shrink-0 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-md">
               EC
             </div>
-            <div className="leading-tight">
-              <p className="text-lg font-bold">ElderCare</p>
-              <p className="text-xs font-medium text-slate-500">
+            <div className="min-w-0 leading-tight">
+              <p className="truncate text-base sm:text-lg font-bold">ElderCare</p>
+              <p className="hidden sm:block text-xs font-medium text-slate-500">
                 Trusted home support
               </p>
             </div>
@@ -77,7 +77,7 @@ function Navbar() {
             )}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             {user ? (
               <>
                 <div className="hidden lg:flex flex-col text-right">
@@ -112,7 +112,7 @@ function Navbar() {
             )}
 
             <Link to={user ? "/profile" : "/login"}>
-              <div className="w-11 h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shadow-md hover:scale-105 transition">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shadow-md hover:scale-105 transition">
                 {user?.email ? user.email.charAt(0).toUpperCase() : "P"}
               </div>
             </Link>
@@ -127,7 +127,7 @@ function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                className={`px-3 py-2 rounded-full text-sm font-medium transition ${
                   isActive
                     ? "bg-blue-600 text-white"
                     : "bg-white text-slate-700 border border-slate-200"

@@ -89,13 +89,13 @@ function Services() {
   ]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#eaf7fb] via-[#d2eef5] to-[#b9e3ee] px-6 pt-24 pb-12">
+    <div className="min-h-screen bg-gradient-to-br from-[#eaf7fb] via-[#d2eef5] to-[#b9e3ee] px-4 sm:px-6 pt-24 sm:pt-28 pb-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-600 mb-3">
             Trusted Elder Care
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 leading-tight">
             Find the right caregiver for your family
           </h1>
           <p className="max-w-2xl mx-auto text-slate-600 text-base md:text-lg">
@@ -138,7 +138,7 @@ function Services() {
               ))}
             </select>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <select
                 value={selectedRating}
                 onChange={(e) => setSelectedRating(e.target.value)}
@@ -176,18 +176,18 @@ function Services() {
           </div>
         ) : (
           <>
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <p className="text-slate-700 font-medium">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+              <p className="text-slate-700 font-medium text-sm sm:text-base">
                 {filteredCaregivers.length} caregiver
                 {filteredCaregivers.length !== 1 ? "s" : ""} found
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {serviceOptions.slice(0, 6).map((service) => (
                   <button
                     key={service}
                     onClick={() => setSelectedService(service)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                    className={`px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition ${
                       selectedService === service
                         ? "bg-blue-600 text-white shadow-lg"
                         : "bg-white/70 text-slate-700 hover:bg-blue-100"
@@ -200,8 +200,8 @@ function Services() {
             </div>
 
             {filteredCaregivers.length === 0 ? (
-              <div className="bg-white/75 rounded-3xl p-10 text-center shadow-lg">
-                <h2 className="text-2xl font-bold text-slate-800 mb-3">
+              <div className="bg-white/75 rounded-3xl p-6 sm:p-10 text-center shadow-lg">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 mb-3">
                   No caregivers match your search
                 </h2>
                 <p className="text-slate-600 mb-5">
@@ -221,24 +221,24 @@ function Services() {
                 </button>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                 {filteredCaregivers.map((c) => (
                   <div
                     key={c._id}
-                    className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/70 hover:-translate-y-1 hover:shadow-2xl transition duration-300"
+                    className="bg-white/80 backdrop-blur-xl rounded-3xl p-5 sm:p-6 shadow-lg border border-white/70 hover:-translate-y-1 hover:shadow-2xl transition duration-300"
                   >
                     <div className="flex items-start justify-between gap-3 mb-5">
-                      <div className="flex items-center gap-4">
+                      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                         <img
                           src={c.image || "https://via.placeholder.com/150"}
                           alt={c.name || "Caregiver"}
-                          className="w-16 h-16 rounded-2xl object-cover shadow-md"
+                          className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-md shrink-0"
                         />
-                        <div>
-                          <h2 className="text-xl font-bold text-slate-800">
+                        <div className="min-w-0">
+                          <h2 className="text-lg sm:text-xl font-bold text-slate-800 truncate">
                             {c.name || "Unnamed Caregiver"}
                           </h2>
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-slate-600 truncate">
                             {c.service || "Service not provided"}
                           </p>
                         </div>
@@ -305,7 +305,7 @@ function Services() {
                       )}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <button
                         onClick={() => navigate(`/caregiver/${c._id}`)}
                         className="w-full py-3 rounded-xl border border-blue-200 text-blue-700 font-semibold hover:bg-blue-50 transition"
