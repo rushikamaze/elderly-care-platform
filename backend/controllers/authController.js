@@ -10,7 +10,7 @@ const generateToken = (id, role) => {
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: "Please fill all required fields" });
@@ -28,7 +28,7 @@ export const registerUser = async (req, res) => {
       name,
       email: email.toLowerCase(),
       password: hashedPassword,
-      role: role === "admin" ? "admin" : "user",
+      role: "user",
     });
 
     const token = generateToken(user._id, user.role);
