@@ -93,13 +93,6 @@ function Navbar() {
                   </span>
                   <span className="text-xs text-slate-500">{user.email}</span>
                 </div>
-
-                <button
-                  onClick={logout}
-                  className="hidden sm:inline-flex bg-red-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-600 transition"
-                >
-                  Logout
-                </button>
               </>
             ) : (
               <div className="hidden sm:flex items-center gap-2">
@@ -139,7 +132,7 @@ function Navbar() {
                     <button
                       type="button"
                       onClick={logout}
-                      className="mt-1 w-full rounded-xl px-4 py-2 text-left text-sm font-medium text-red-600 hover:bg-red-50 sm:hidden"
+                      className="mt-1 w-full rounded-xl px-4 py-2 text-left text-sm font-medium text-red-600 hover:bg-red-50"
                     >
                       Logout
                     </button>
