@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   let user = null;
 
@@ -15,8 +17,13 @@ function Navbar() {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setIsProfileMenuOpen(false);
     navigate("/login");
   };
+
+  useEffect(() => {
+    setIsProfileMenuOpen(false);
+  }, [location.pathname]);
 
   const navLinks = [
     { label: "Home", path: "/" },
@@ -77,7 +84,7 @@ function Navbar() {
             )}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="relative flex shrink-0 items-center gap-2 sm:gap-3">
             {user ? (
               <>
                 <div className="hidden lg:flex flex-col text-right">
@@ -111,15 +118,45 @@ function Navbar() {
               </div>
             )}
 
-            <Link to={user ? "/profile" : "/login"}>
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shadow-md hover:scale-105 transition">
-                {user?.email ? user.email.charAt(0).toUpperCase() : "P"}
-              </div>
-            </Link>
+            {user ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setIsProfileMenuOpen((open) => !open)}
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shadow-md hover:scale-105 transition"
+                >
+                  {user.email.charAt(0).toUpperCase()}
+                </button>
+
+                {isProfileMenuOpen && (
+                  <div className="absolute right-0 top-14 sm:top-16 w-44 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl">
+                    <Link
+                      to="/profile"
+                      className="block rounded-xl px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+                    >
+                      Profile
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={logout}
+                      className="mt-1 w-full rounded-xl px-4 py-2 text-left text-sm font-medium text-red-600 hover:bg-red-50 sm:hidden"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <Link to="/login">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-sm font-bold shadow-md hover:scale-105 transition">
+                  P
+                </div>
+              </Link>
+            )}
           </div>
         </div>
 
-        <div className="md:hidden mt-4 flex flex-wrap gap-2">
+        <div className="md:hidden mt-4 flex gap-2 overflow-x-auto whitespace-nowrap pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
 
@@ -127,7 +164,7 @@ function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-full text-sm font-medium transition ${
+                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition ${
                   isActive
                     ? "bg-blue-600 text-white"
                     : "bg-white text-slate-700 border border-slate-200"
@@ -139,42 +176,35 @@ function Navbar() {
           })}
 
           {user?.role === "admin" && (
-            <Link
-              to="/admin"
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                location.pathname === "/admin"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white text-slate-700 border border-slate-200"
-              }`}
-            >
-              Admin
-            </Link>
-          )}
-
-          {user ? (
-            <button
-              onClick={logout}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition"
-            >
-              Logout
-            </button>
-          ) : (
-            <>
               <Link
-                to="/login"
-                className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition"
+                to="/admin"
+                className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition ${
+                  location.pathname === "/admin"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-slate-700 border border-slate-200"
+                }`}
               >
-                Login
+                Admin
               </Link>
-              <Link
-                to="/register"
-                className="px-4 py-2 rounded-full text-sm font-medium bg-slate-900 text-white hover:bg-slate-800 transition"
-              >
-                Register
-              </Link>
-            </>
-          )}
+            )}
         </div>
+
+        {!user && (
+          <div className="md:hidden mt-3 flex gap-2">
+            <Link
+              to="/login"
+              className="px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="px-4 py-2 rounded-full text-sm font-medium bg-slate-900 text-white hover:bg-slate-800 transition"
+            >
+              Register
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
